@@ -37,7 +37,7 @@ export default function DigitalFrame() {
     console.log('Starting carousel')
     const interval = setInterval(() => {
       api.scrollNext()
-    }, 2000)
+    }, 2500)
     
     return () => {
       clearInterval(interval)
@@ -56,26 +56,26 @@ export default function DigitalFrame() {
   useEffect(() => {
     const handleInteraction = async () => {
       if (!isPlaying && audioRef.current) {
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-          try {
-            await playPromise;
-            setIsPlaying(true);
-          } catch (error) {
-            console.error('Auto-play error:', error);
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch((error) => {
+          console.error('Playback failed:', error);
+          if (audioRef.current) {
+            audioRef.current.play();
           }
-        }
+        });
       }
     };
 
-    window.addEventListener('click', handleInteraction);
-    window.addEventListener('touchstart', handleInteraction);
-    window.addEventListener('keydown', handleInteraction);
+    const events = ['click', 'touchstart', 'touchend', 'keydown'];
+    events.forEach(event => {
+      window.addEventListener(event, handleInteraction);
+    });
 
     return () => {
-      window.addEventListener('click', handleInteraction);
-      window.addEventListener('touchstart', handleInteraction);
-      window.addEventListener('keydown', handleInteraction);
+      events.forEach(event => {
+        window.removeEventListener(event, handleInteraction);
+      });
     };
   }, [isPlaying]);
 
@@ -152,6 +152,7 @@ export default function DigitalFrame() {
           src="https://img.tukuppt.com//newpreview_music//09//01//08//5c89bdd9395b454224.mp3"
           loop
           preload="auto"
+          playsInline
         />
         <div className="mt-6 sm:mt-8 text-center space-y-3 sm:space-y-4">
           <p className="text-base sm:text-lg text-gray-700 font-mashanzheng leading-relaxed">
