@@ -149,7 +149,7 @@ export default function DigitalFrame() {
         </Carousel>
         <audio
           ref={audioRef}
-          src="https://img.tukuppt.com//newpreview_music//09//01//08//5c89bdd9395b454224.mp3"
+          src="./bgm.mp3"
           loop
           preload="auto"
           playsInline
