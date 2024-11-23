@@ -112,12 +112,13 @@ export default function DigitalFrame() {
         </div>
 
         <Carousel 
-          className="w-full max-w-xl mx-auto px-2 sm:px-0"
+          className="w-full max-w-md mx-auto px-2 sm:px-0"
           setApi={setApi}
           opts={{
             align: "start",
             loop: true,
           }}
+          onFocus={(e) => e.preventDefault()}
         >
           <CarouselContent>
             {images.map((src, index) => (
@@ -152,8 +153,22 @@ export default function DigitalFrame() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious 
+            className="hidden sm:flex -left-12"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              api?.scrollPrev();
+            }} 
+          />
+          <CarouselNext 
+            className="hidden sm:flex -right-12"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              api?.scrollNext();
+            }}
+          />
         </Carousel>
         <button
           onClick={() => {
