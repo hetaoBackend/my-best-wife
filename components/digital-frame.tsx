@@ -180,10 +180,10 @@ export default function DigitalFrame() {
               }
             }
           }}
-          className="fixed top-4 right-4 z-10"
+          className="fixed top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-md hover:bg-white transition-all duration-300"
         >
           <Music
-            className={`w-6 h-6 text-pink-500 transition-transform ${
+            className={`w-5 h-5 text-pink-500 transition-transform ${
               isPlaying ? 'animate-spin-slow' : ''
             }`}
           />
