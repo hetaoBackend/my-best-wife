@@ -5,12 +5,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Heart, Pause, Play } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import { motion } from 'framer-motion'
 
 const images = [
   "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG47.jpg?height=800&width=600",
   'https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG41.jpg?height=800&width=600',
   "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG45.jpg?height=800&width=600",
-  'https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG42.jpg?height=800&width=600',
+  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG49.jpg?height=800&width=600",
+  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG50.jpg?height=800&width=600",
+  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG51.jpg?height=800&width=600",
   'https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG24823.jpg?height=800&width=600',
 ]
 
@@ -62,7 +65,7 @@ export default function DigitalFrame() {
     console.log('Starting carousel')
     const interval = setInterval(() => {
       api.scrollNext()
-    }, 1500)
+    }, 2000)
     
     return () => {
       clearInterval(interval)
@@ -82,7 +85,24 @@ export default function DigitalFrame() {
     <Card className="w-full max-w-3xl bg-white/80 backdrop-blur-sm shadow-lg rounded-lg overflow-hidden">
       <CardContent className="p-6">
         <div className="relative mb-6">
-          <h1 className="text-3xl font-bold text-center text-pink-600">我们的幸福时光</h1>
+          <h1 className="text-center">
+            <motion.span
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="block text-4xl font-kuaile text-pink-600 mb-3"
+            >
+              ✿ 最最亲爱的你 ✿
+            </motion.span>
+            <motion.span
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="block text-xl font-xiaowei text-pink-500/90"
+            >
+              Sweet Memories With You
+            </motion.span>
+          </h1>
           <Button
             variant="outline"
             size="icon"
