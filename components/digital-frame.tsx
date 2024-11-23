@@ -3,8 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { Heart, Pause, Play } from 'lucide-react'
-import { Button } from "@/components/ui/button"
+import { Heart } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const images = [
@@ -22,33 +21,6 @@ export default function DigitalFrame() {
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
   const [api, setApi] = useState<any>()
-
-  const togglePlayback = async () => {
-    console.log('Toggle clicked, current state:', isPlaying)
-    
-    try {
-      if (!audioRef.current) {
-        console.log('No audio reference')
-        return
-      }
-
-      if (isPlaying) {
-        audioRef.current.pause()
-        setIsPlaying(false)
-        console.log('Paused')
-      } else {
-        const playPromise = audioRef.current.play()
-        if (playPromise !== undefined) {
-          await playPromise
-          setIsPlaying(true)
-          console.log('Playing')
-        }
-      }
-    } catch (error) {
-      console.error('Playback error:', error)
-      setIsPlaying(false)
-    }
-  }
 
   useEffect(() => {
     if (audioRef.current) {
@@ -81,6 +53,32 @@ export default function DigitalFrame() {
     })
   }, [api])
 
+  useEffect(() => {
+    const handleInteraction = async () => {
+      if (!isPlaying && audioRef.current) {
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+          try {
+            await playPromise;
+            setIsPlaying(true);
+          } catch (error) {
+            console.error('Auto-play error:', error);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('click', handleInteraction);
+    window.addEventListener('touchstart', handleInteraction);
+    window.addEventListener('keydown', handleInteraction);
+
+    return () => {
+      window.addEventListener('click', handleInteraction);
+      window.addEventListener('touchstart', handleInteraction);
+      window.addEventListener('keydown', handleInteraction);
+    };
+  }, [isPlaying]);
+
   return (
     <Card className="w-full max-w-3xl mx-auto bg-white/80 backdrop-blur-sm shadow-lg rounded-lg overflow-hidden">
       <CardContent className="p-3 sm:p-6">
@@ -103,18 +101,6 @@ export default function DigitalFrame() {
               Sweet Memories With You
             </motion.span>
           </h1>
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={togglePlayback}
-            className="rounded-full absolute right-0 top-1/2 -translate-y-1/2"
-          >
-            {isPlaying ? (
-              <Pause className="h-4 w-4" />
-            ) : (
-              <Play className="h-4 w-4" />
-            )}
-          </Button>
         </div>
 
         <Carousel 
