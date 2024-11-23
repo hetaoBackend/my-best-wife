@@ -81,7 +81,7 @@ export default function DigitalFrame() {
 
   return (
     <Card className="w-full max-w-3xl mx-auto bg-white/80 backdrop-blur-sm shadow-lg rounded-lg overflow-hidden">
-      <CardContent className="p-3 sm:p-6">
+      <CardContent className="p-2 sm:p-6">
         <div className="relative mb-4 sm:mb-6">
           <h1 className="text-center">
             <motion.span
@@ -104,7 +104,7 @@ export default function DigitalFrame() {
         </div>
 
         <Carousel 
-          className="w-full max-w-xl mx-auto px-4 sm:px-0"
+          className="w-full max-w-xl mx-auto px-2 sm:px-0"
           setApi={setApi}
           opts={{
             align: "start",
@@ -115,17 +115,16 @@ export default function DigitalFrame() {
             {images.map((src, index) => (
               <CarouselItem key={index}>
                 <div className="flex flex-col items-center space-y-2">
-                  <div className="relative w-full max-w-2xl">
+                  <div className="relative w-full">
                     <div 
                       className="relative flex justify-center"
                     >
                       <img
                         src={src}
                         alt={`Memory ${index + 1}`}
-                        className="rounded-lg transition-opacity duration-300"
+                        className="rounded-lg transition-opacity duration-300 w-full h-auto"
                         style={{
-                          maxHeight: '50vh',
-                          maxWidth: '100%',
+                          maxHeight: '40vh',
                           objectFit: 'contain'
                         }}
                       />
