@@ -135,6 +135,27 @@ export default function DigitalFrame() {
                           }}
                           loading="lazy"
                         />
+                        {index === currentIndex && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (audioRef.current) {
+                                if (isPlaying) {
+                                  audioRef.current.pause();
+                                } else {
+                                  audioRef.current.play();
+                                }
+                              }
+                            }}
+                            className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-md hover:bg-white transition-all duration-300"
+                          >
+                            <Music
+                              className={`w-4 h-4 text-pink-500 transition-transform ${
+                                isPlaying ? 'animate-spin-slow' : ''
+                              }`}
+                            />
+                          </button>
+                        )}
                       </div>
                       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
                         {images.map((_, index) => (
@@ -169,24 +190,6 @@ export default function DigitalFrame() {
             }}
           />
         </Carousel>
-        <button
-          onClick={() => {
-            if (audioRef.current) {
-              if (isPlaying) {
-                audioRef.current.pause();
-              } else {
-                audioRef.current.play();
-              }
-            }
-          }}
-          className="fixed top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-md hover:bg-white transition-all duration-300"
-        >
-          <Music
-            className={`w-5 h-5 text-pink-500 transition-transform ${
-              isPlaying ? 'animate-spin-slow' : ''
-            }`}
-          />
-        </button>
         <audio
           ref={audioRef}
           src="./bgm.mp3"
