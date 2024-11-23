@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { Heart } from 'lucide-react'
+import { Heart, Music } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const images = [
@@ -79,6 +79,14 @@ export default function DigitalFrame() {
     };
   }, [isPlaying]);
 
+  const handlePlay = () => {
+    setIsPlaying(true);
+  };
+
+  const handlePause = () => {
+    setIsPlaying(false);
+  };
+
   return (
     <Card className="w-full max-w-3xl mx-auto bg-white/80 backdrop-blur-sm shadow-lg rounded-lg overflow-hidden">
       <CardContent className="p-2 sm:p-6">
@@ -147,11 +155,31 @@ export default function DigitalFrame() {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
+        <button
+          onClick={() => {
+            if (audioRef.current) {
+              if (isPlaying) {
+                audioRef.current.pause();
+              } else {
+                audioRef.current.play();
+              }
+            }
+          }}
+          className="fixed top-4 right-4 z-10"
+        >
+          <Music
+            className={`w-6 h-6 text-pink-500 transition-transform ${
+              isPlaying ? 'animate-spin-slow' : ''
+            }`}
+          />
+        </button>
         <audio
           ref={audioRef}
           src="./bgm.mp3"
           loop
           preload="auto"
+          onPlay={handlePlay}
+          onPause={handlePause}
           playsInline
         />
         <div className="mt-6 sm:mt-8 text-center space-y-3 sm:space-y-4">
