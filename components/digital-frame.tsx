@@ -13,7 +13,7 @@ const images = [
   "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG49.jpg?height=800&width=600",
   "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG50.jpg?height=800&width=600",
   "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG51.jpg?height=800&width=600",
-  'https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG24823.jpg?height=800&width=600',
+  'https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG55.jpg?height=800&width=600',
 ]
 
 export default function DigitalFrame() {
@@ -37,7 +37,7 @@ export default function DigitalFrame() {
     console.log('Starting carousel')
     const interval = setInterval(() => {
       api.scrollNext()
-    }, 2500)
+    }, 2400)
     
     return () => {
       clearInterval(interval)
