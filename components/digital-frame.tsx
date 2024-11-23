@@ -82,15 +82,15 @@ export default function DigitalFrame() {
   }, [api])
 
   return (
-    <Card className="w-full max-w-3xl bg-white/80 backdrop-blur-sm shadow-lg rounded-lg overflow-hidden">
-      <CardContent className="p-6">
-        <div className="relative mb-6">
+    <Card className="w-full max-w-3xl mx-auto bg-white/80 backdrop-blur-sm shadow-lg rounded-lg overflow-hidden">
+      <CardContent className="p-3 sm:p-6">
+        <div className="relative mb-4 sm:mb-6">
           <h1 className="text-center">
             <motion.span
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="block text-4xl font-kuaile text-pink-600 mb-3"
+              className="block text-2xl sm:text-4xl font-kuaile text-pink-600 mb-2 sm:mb-3"
             >
               ✿ 最最亲爱的你 ✿
             </motion.span>
@@ -98,7 +98,7 @@ export default function DigitalFrame() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="block text-xl font-xiaowei text-pink-500/90"
+              className="block text-lg sm:text-xl font-xiaowei text-pink-500/90"
             >
               Sweet Memories With You
             </motion.span>
@@ -118,7 +118,7 @@ export default function DigitalFrame() {
         </div>
 
         <Carousel 
-          className="w-full max-w-xl mx-auto"
+          className="w-full max-w-xl mx-auto px-4 sm:px-0"
           setApi={setApi}
           opts={{
             align: "start",
@@ -168,26 +168,26 @@ export default function DigitalFrame() {
           loop
           preload="auto"
         />
-        <div className="mt-8 text-center space-y-4">
-          <p className="text-lg text-gray-700 font-mashanzheng leading-relaxed">
+        <div className="mt-6 sm:mt-8 text-center space-y-3 sm:space-y-4">
+          <p className="text-base sm:text-lg text-gray-700 font-mashanzheng leading-relaxed">
             亲爱的老婆，
           </p>
-          <p className="text-lg text-gray-700 font-mashanzheng leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-700 font-mashanzheng leading-relaxed">
             感谢你让我的生命如此完整，
             <br />
             有你相伴的每一天都是最珍贵的礼物。
           </p>
-          <p className="text-lg text-gray-700 font-mashanzheng leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-700 font-mashanzheng leading-relaxed">
             现在，我们即将迎来一个新的小生命，
             <br />
             这份期待与喜悦无法用言语表达。
           </p>
-          <div className="pt-4 flex flex-col items-center text-pink-600 font-mashanzheng">
-            <p className="text-xl mb-2">愿我们的爱</p>
-            <p className="text-xl mb-3">在这个温暖的小家里永远延续</p>
+          <div className="pt-3 sm:pt-4 flex flex-col items-center text-pink-600 font-mashanzheng">
+            <p className="text-lg sm:text-xl mb-2">愿我们的爱</p>
+            <p className="text-lg sm:text-xl mb-3">在这个温暖的小家里永远延续</p>
             <div className="flex items-center">
               <Heart className="w-5 h-5 mr-2 fill-current animate-pulse" /> 
-              <span className="text-xl">永远爱你</span>
+              <span className="text-lg sm:text-xl">永远爱你</span>
               <Heart className="w-5 h-5 ml-2 fill-current animate-pulse" />
             </div>
           </div>
