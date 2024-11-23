@@ -8,8 +8,8 @@ import { motion } from 'framer-motion'
 
 const images = [
   "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG24823.jpg?height=800&width=600",
-  'https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG25013.jpg?height=800&width=600',
-  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG25014.jpg?height=800&width=600",
+  'https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/截屏2024-11-23 21.07.04.png?height=800&width=600',
+  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/截屏2024-11-23 21.07.35.png?height=800&width=600",
   "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG25016.jpg?height=800&width=600",
   "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG25015.jpg?height=800&width=600",
 ]
