@@ -7,13 +7,11 @@ import { Heart, Music } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const images = [
-  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG47.jpg?height=800&width=600",
-  'https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG41.jpg?height=800&width=600',
-  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG45.jpg?height=800&width=600",
-  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG49.jpg?height=800&width=600",
-  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG50.jpg?height=800&width=600",
-  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG51.jpg?height=800&width=600",
-  'https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG55.jpg?height=800&width=600',
+  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG24823.jpg?height=800&width=600",
+  'https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG25013.jpg?height=800&width=600',
+  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG25014.jpg?height=800&width=600",
+  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG25016.jpg?height=800&width=600",
+  "https://lf3-static.bytednsdoc.com/obj/eden-cn/lovha/WechatIMG25015.jpg?height=800&width=600",
 ]
 
 export default function DigitalFrame() {
@@ -125,19 +123,20 @@ export default function DigitalFrame() {
               <CarouselItem key={index}>
                 <div className="flex flex-col items-center space-y-2">
                   <div className="relative w-full">
-                    <div 
-                      className="relative flex justify-center"
-                    >
-                      <img
-                        src={src}
-                        alt={`Memory ${index + 1}`}
-                        className="rounded-lg transition-opacity duration-300 w-full h-auto"
-                        style={{
-                          maxHeight: '40vh',
-                          objectFit: 'contain'
-                        }}
-                      />
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
+                    <div className="relative flex justify-center">
+                      <div className="w-full aspect-[3/4] relative overflow-hidden rounded-lg">
+                        <img
+                          src={src}
+                          alt={`Memory ${index + 1}`}
+                          className="absolute inset-0 w-full h-full transition-opacity duration-300"
+                          style={{
+                            objectFit: 'contain',
+                            backgroundColor: 'rgba(0, 0, 0, 0.03)',
+                          }}
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
                         {images.map((_, index) => (
                           <div
                             key={index}
