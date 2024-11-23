@@ -16,18 +16,25 @@ export default function DigitalFrame() {
   const [isPlaying, setIsPlaying] = useState(true)
   const [isPaused, setIsPaused] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
+  const [api, setApi] = useState<any>()
 
   useEffect(() => {
-    if (isPaused) return
+    if (!api || isPaused) return
     
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      )
-    }, 1000)
+      api.scrollNext()
+    }, 2000)
     
     return () => clearInterval(interval)
-  }, [isPaused, images.length])
+  }, [api, isPaused])
+
+  useEffect(() => {
+    if (!api) return
+    
+    api.on('select', () => {
+      setCurrentIndex(api.selectedScrollSnap())
+    })
+  }, [api])
 
   useEffect(() => {
     const playAudio = async () => {
@@ -61,7 +68,14 @@ export default function DigitalFrame() {
     <Card className="w-full max-w-3xl bg-white/80 backdrop-blur-sm shadow-lg rounded-lg overflow-hidden">
       <CardContent className="p-6">
         <h1 className="text-3xl font-bold text-center mb-6 text-pink-600">我们的幸福时光</h1>
-        <Carousel className="w-full max-w-xl mx-auto">
+        <Carousel 
+          className="w-full max-w-xl mx-auto"
+          setApi={setApi}
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+        >
           <CarouselContent>
             {images.map((src, index) => (
               <CarouselItem key={index}>
